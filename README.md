@@ -16,38 +16,36 @@ Missing covariate data will be addressed using multiple imputations. Therefore m
 ### Pooling Estimates
 Extract and average ATEs across imputations:
 
-`r
-ates <- sapply(tmle_results, function(x) x$estimates$ATE$psi)
+`
+ates <- sapply(tmle_results, function(x) x$estimates$ATE$psi)  
 ate_pooled <- mean(ates)
 `
 
-3. Variance Estimation
+### Variance Estimation
 Combine within-imputation (influence function) and between-imputation variance:
 
-r
+#### Within-imputation variance (average of TMLE SEs^2)
+`var_within <- mean(sapply(tmle_results, function(x) x$estimates$ATE$var.psi))`
 
-### Within-imputation variance (average of TMLE SEs^2)
-var_within <- mean(sapply(tmle_results, function(x) x$estimates$ATE$var.psi))
-
-### Between-imputation variance
-var_between <- var(ates)
+#### Between-imputation variance
+`var_between <- var(ates)`
 
 ### Total variance (Rubin's formula)
-var_total <- var_within + var_between + (var_between / 20)
-se_pooled <- sqrt(var_total)
+`var_total <- var_within + var_between + (var_between / 20)
+se_pooled <- sqrt(var_total)`
 
 ### Confidence Intervals
 Use Barnard-Rubin degrees of freedom for small samples:
 
-r
-lambda <- (var_between + var_between/20) / var_total
-nu_old <- (20 - 1) / lambda^2
-nu_com <- nrow(your_data) - length(coef(model)) - 1
-nu_obs <- (nu_com + 1)/(nu_com + 3) * nu_com * (1 - lambda)
-df <- (nu_old * nu_obs) / (nu_old + nu_obs)
+`
+lambda <- (var_between + var_between/20) / var_total  
+nu_old <- (20 - 1) / lambda^2  
+nu_com <- nrow(your_data) - length(coef(model)) - 1  
+nu_obs <- (nu_com + 1)/(nu_com + 3) * nu_com * (1 - lambda)  
+df <- (nu_old * nu_obs) / (nu_old + nu_obs)  
 
-conf_low <- ate_pooled - qt(0.975, df) * se_pooled
-conf_high <- ate_pooled + qt(0.975, df) * se_pooled
+conf_low <- ate_pooled - qt(0.975, df) * se_pooled  
+conf_high <- ate_pooled + qt(0.975, df) * se_pooled`   
 
 ## Multiple comparisons
 Determine the specific relationships you want to investigate AND/OR Use VanDerWiele to test for multiple comparisons.
