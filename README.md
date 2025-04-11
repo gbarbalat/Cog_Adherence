@@ -37,8 +37,7 @@ se_pooled <- sqrt(var_total)`
 ### Confidence Intervals
 Use Barnard-Rubin degrees of freedom for small samples:
 
-`
-lambda <- (var_between + var_between/20) / var_total  
+`lambda <- (var_between + var_between/20) / var_total  
 nu_old <- (20 - 1) / lambda^2  
 nu_com <- nrow(your_data) - length(coef(model)) - 1  
 nu_obs <- (nu_com + 1)/(nu_com + 3) * nu_com * (1 - lambda)  
