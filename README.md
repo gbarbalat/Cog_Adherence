@@ -6,8 +6,12 @@ We will use targeted maximum likelihood estimation to measure the effect of a sh
 The study design is cross-sectional and the results will have to be interpreted with caution, i.e. non-causally.
 
 ## Set of covariates
-
+See associated DAG. 
 
 ## Missing data
+Observations with missing outcome data will be removed from the analysis.
+Observations with missing targeted dependent variable data (cogntive function) will also be removed. 
+Missing covariate data will be addressed using multiple imputations. Therefore multiple analyses will be carried out 
 
-## 
+## Multiple comparisons
+Determine the specific relationships you want to investigate AND/OR Use VanDerWiele to test for multiple comparisons.
