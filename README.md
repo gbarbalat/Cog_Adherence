@@ -9,15 +9,27 @@ The study design is cross-sectional and the results will have to be interpreted 
 See associated DAG. 
 
 ## Missing data
+
+### Missing exposure and outcome
 Observations with missing outcome data will be removed from the analysis.
 Observations with missing targeted dependent variable data (cogntive function) will also be removed. 
+
+### Missing covariates
 Missing covariate data will be addressed using multiple imputations. Therefore multiple analyses will be carried out. We anticipate 5% missing data and will use m=10-20 imputed datasets.
 
+### Imputation model 
+(24) For valid inference with MI, each univariate imputation model
+should be tailored to be compatible with the analysis method. To achieve this, all analysis variables and
+complexities such as interaction terms in the target analysis should be included as predictors in each
+univariate imputation model.(24)
+
+### Pooling out point estimates and their variances  
+Analysis is performed within each completed dataset and the results are pooled using Rubin’s rules to obtain the final estimate and its standard error (SE).  
 Estimates will be averaged over imputed datasets. Variance estimation will combine within-imputation (average of TMLE SEs^2) and between-imputation (variance of mean estimations) variance. Total variance will be estimated according to Rubin's formula
 `var_total <- var_within + var_between + (var_between / 20)  
 se_pooled <- sqrt(var_total)`
 
-### Confidence Intervals
+#### Confidence Intervals
 Use Barnard-Rubin degrees of freedom for small samples:
 
 `
