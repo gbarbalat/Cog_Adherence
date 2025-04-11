@@ -31,7 +31,7 @@ Combine within-imputation (influence function) and between-imputation variance:
 `var_between <- var(ates)`
 
 ### Total variance (Rubin's formula)
-`var_total <- var_within + var_between + (var_between / 20)
+`var_total <- var_within + var_between + (var_between / 20)  
 se_pooled <- sqrt(var_total)`
 
 ### Confidence Intervals
