@@ -20,25 +20,22 @@ Missing covariate data will be imputed using multiple imputations (MI). We antic
 
 ### Imputation model 
 For valid inference with MI, each univariate imputation model should be compatible with the analysis method, i.e. all variables included in the analysis should be included as predictors in the imputation model. Interaction terms and non-linearities should also be included.  
-Specifying interaction terms in both the outcome and exposure models can be error-prone, particularly when prior knowledge of effect modifiers is limited. To mitigate this risk, leveraging SuperLearner in both the target (causal) model and the imputation model offers a data-adaptive solution. This ensemble learning approach systematically captures potential interactions and nonlinearities without requiring explicit prespecification, enhancing robustness to model misspecification in both stages of analysis.  To impute using SuperLearner, we will be using the `misl R` package
+Specifying interaction terms in both the outcome and exposure models can be error-prone, particularly when prior knowledge of effect modifiers is limited. To mitigate this risk, leveraging SuperLearner in both the target (causal) model and the imputation model offers a data-adaptive solution. This ensemble learning approach systematically captures potential interactions and nonlinearities without requiring explicit prespecification, enhancing robustness to model misspecification in both stages of analysis.  To impute using SuperLearner, we will be using the `misl R` package. Coefficient will be pulled using Rubin's rules.
 
 ### Pooling out point estimates and their variances  
 Analysis is performed within each completed dataset and the results are pooled using Rubin’s rules to obtain the final estimate and its standard error (SE).  
 Estimates will be averaged over imputed datasets. Variance estimation will combine within-imputation (average of TMLE SEs^2) and between-imputation (variance of mean estimations) variance. Total variance will be estimated according to Rubin's formula
-`var_total <- var_within + var_between + (var_between / 20)  
+`var_total <- U_bar + B + (B / m)  
 se_pooled <- sqrt(var_total)`
 
 #### Confidence Intervals
 Use Barnard-Rubin degrees of freedom for small samples:
 
 `
-lambda <- (var_between + var_between/20) / var_total  
-nu_old <- (20 - 1) / lambda^2  
-nu_com <- nrow(your_data) - length(coef(model)) - 1  
-nu_obs <- (nu_com + 1)/(nu_com + 3) * nu_com * (1 - lambda)  
-df <- (nu_old * nu_obs) / (nu_old + nu_obs)  
-conf_low <- ate_pooled - qt(0.975, df) * se_pooled  
-conf_high <- ate_pooled + qt(0.975, df) * se_pooled
+r <- ((1 + 1/m) * B) / U_bar
+nu <- (m - 1) * (1 + 1/r)^2 
+conf_low <- ate_pooled - qt(0.975, nu) * se_pooled  
+conf_high <- ate_pooled + qt(0.975, nu) * se_pooled
 `
 
 ## Multiple comparisons
