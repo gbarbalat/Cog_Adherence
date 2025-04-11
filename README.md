@@ -16,9 +16,11 @@ Missing covariate data will be addressed using multiple imputations. Therefore m
 ### Pooling Estimates
 Extract and average ATEs across imputations:
 
-`r`
+`r
 ates <- sapply(tmle_results, function(x) x$estimates$ATE$psi)
 ate_pooled <- mean(ates)
+`
+
 3. Variance Estimation
 Combine within-imputation (influence function) and between-imputation variance:
 
