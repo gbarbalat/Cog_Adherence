@@ -19,7 +19,8 @@ We acknowledge that this may be seen as over-simplification.
 Missing covariate data will be imputed using multiple imputations (MI). We anticipate 5% missing data and will use m=10-20 imputed datasets.
 
 ### Imputation model 
-For valid inference with MI, each univariate imputation model should be compatible with the analysis method, i.e. all variables included in the analysis should be included as predictors in the imputation model. Interaction terms and non-linearities should also be included.
+For valid inference with MI, each univariate imputation model should be compatible with the analysis method, i.e. all variables included in the analysis should be included as predictors in the imputation model. Interaction terms and non-linearities should also be included.  
+Specifying interaction terms in both the outcome and exposure models can be error-prone, particularly when prior knowledge of effect modifiers is limited. To mitigate this risk, leveraging SuperLearner in both the target (causal) model and the imputation model offers a data-adaptive solution. This ensemble learning approach systematically captures potential interactions and nonlinearities without requiring explicit prespecification, enhancing robustness to model misspecification in both stages of analysis.  To impute using SuperLearner, we will be using the `misl R` package
 
 ### Pooling out point estimates and their variances  
 Analysis is performed within each completed dataset and the results are pooled using Rubin’s rules to obtain the final estimate and its standard error (SE).  
