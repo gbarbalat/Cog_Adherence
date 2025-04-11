@@ -5,8 +5,8 @@ In particular, we will investigate the _targeted_ association between 1) working
 We will use targeted maximum likelihood estimation to measure the effect of a shift in cognitive tests (e.g. one more point in digit span).  
 The study design is cross-sectional and the results will have to be interpreted with caution, i.e. non-causally.
 
-## Set of covariates
-See associated DAG. 
+## Covariates
+In this cross-sectional study, we'll use the following set of covariates to investigate the effect of cognitive functions on rehabilitation outcomes, above and beyond age, sex, rehabilitation centre, educational attainment, psychiatric comoribidities, somatic comorbities, addiction comorbidities, antipsychotic treatment, physical treatment, marital status, having children, global assessment of functioning, severity of clinical global impression, being referred by the public or the private system, being employed, type of accomodation, being or having been of no fixed abode, being a disabled worker beneficiary, duration of illness, number of admissions, duration of admissions, number of suicide attempts, forensic history.
 
 ## Missing data
 
