@@ -12,16 +12,14 @@ See associated DAG.
 
 ### Missing exposure and outcome
 Observations with missing outcome data will be removed from the analysis.
-Observations with missing targeted dependent variable data (cogntive function) will also be removed. 
+Observations with missing targeted dependent variable data (cogntive function) will also be removed.  
+We acknowledge that this may be seen as over-simplification.
 
 ### Missing covariates
-Missing covariate data will be addressed using multiple imputations. Therefore multiple analyses will be carried out. We anticipate 5% missing data and will use m=10-20 imputed datasets.
+Missing covariate data will be imputed using multiple imputations (MI). We anticipate 5% missing data and will use m=10-20 imputed datasets.
 
 ### Imputation model 
-(24) For valid inference with MI, each univariate imputation model
-should be tailored to be compatible with the analysis method. To achieve this, all analysis variables and
-complexities such as interaction terms in the target analysis should be included as predictors in each
-univariate imputation model.(24)
+For valid inference with MI, each univariate imputation model should be compatible with the analysis method, i.e. all variables included in the analysis should be included as predictors in the imputation model. Interaction terms and non-linearities should also be included.
 
 ### Pooling out point estimates and their variances  
 Analysis is performed within each completed dataset and the results are pooled using Rubin’s rules to obtain the final estimate and its standard error (SE).  
