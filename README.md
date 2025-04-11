@@ -45,7 +45,7 @@ nu_obs <- (nu_com + 1)/(nu_com + 3) * nu_com * (1 - lambda)
 df <- (nu_old * nu_obs) / (nu_old + nu_obs)  
 
 conf_low <- ate_pooled - qt(0.975, df) * se_pooled  
-conf_high <- ate_pooled + qt(0.975, df) * se_pooled`   
+conf_high <- ate_pooled + qt(0.975, df) * se_pooled`
 
 ## Multiple comparisons
 Determine the specific relationships you want to investigate AND/OR Use VanDerWiele to test for multiple comparisons.
