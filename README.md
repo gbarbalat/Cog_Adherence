@@ -13,24 +13,7 @@ Observations with missing outcome data will be removed from the analysis.
 Observations with missing targeted dependent variable data (cogntive function) will also be removed. 
 Missing covariate data will be addressed using multiple imputations. Therefore multiple analyses will be carried out. We anticipate 5% missing data and will use m=10-20 imputed datasets.
 
-### Pooling Estimates
-Extract and average ATEs across imputations:
-
-`
-ates <- sapply(tmle_results, function(x) x$estimates$ATE$psi)  
-ate_pooled <- mean(ates)
-`
-
-### Variance Estimation
-Combine within-imputation (influence function) and between-imputation variance:
-
-#### Within-imputation variance (average of TMLE SEs^2)
-`var_within <- mean(sapply(tmle_results, function(x) x$estimates$ATE$var.psi))`
-
-#### Between-imputation variance
-`var_between <- var(ates)`
-
-### Total variance (Rubin's formula)
+Estimates will be averaged over imputed datasets. Variance estimation will combine within-imputation (average of TMLE SEs^2) and between-imputation (variance of mean estimations) variance. Total variance will be estimated according to Rubin's formula
 `var_total <- var_within + var_between + (var_between / 20)  
 se_pooled <- sqrt(var_total)`
 
