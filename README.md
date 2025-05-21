@@ -1,18 +1,18 @@
-# Cog_Rehab
-This study investigates the relationship between specific cognitive functions (e.g., working memory, attention) and functional rehabilitation outcomes in individuals with schizophrenia enrolled in psychosocial rehabiltitation programs.  
-In particular, we will investigate the _targeted_ association between 1) working memory, attention, verbal episodic memory, social cognition complaints, and general intelligence; and 2) well-being/quality of life, self-esteem, autonomy, self-stigma, adherence to treatment, insight, and recovery.  
+# Cog_Adherence
+This study investigates the relationship between specific cognitive functions (e.g., working memory, attention) and patient-reported medication adherence in individuals with schizophrenia enrolled in psychosocial rehabiltitation programs.  
+In particular, we will investigate the _targeted_ association between 1) working memory, attention, fluid intelligence; and 2) adherence to treatment as measured by the Medication Adherence Rating Scale.  
 We will use targeted maximum likelihood estimation to measure the effect of a shift in cognitive tests (e.g. one more point in digit span).  
 The study design is cross-sectional and the results will have to be interpreted with caution, i.e. non-causally.
 
 ## Covariates
-In this cross-sectional study, we'll use the following set of covariates to investigate the effect of cognitive functions on rehabilitation outcomes, above and beyond age, sex, rehabilitation centre, educational attainment, psychiatric comoribidities, somatic comorbities, addiction comorbidities, antipsychotic treatment, physical treatment, marital status, having children, global assessment of functioning, severity of clinical global impression, being referred by the public or the private system, being employed, type of accomodation, being or having been of no fixed abode, being a disabled worker beneficiary, duration of illness, number of admissions, duration of admissions, number of suicide attempts, forensic history.
+In this cross-sectional study, we'll use the following set of covariates to investigate the effect of cognitive functions on rehabilitation outcomes: age, sex, rehabilitation centre, educational attainment, psychiatric comoribidities, somatic comorbities, addiction comorbidities, antipsychotic treatment, physical treatment, marital status, having children, global assessment of functioning, severity of clinical global impression, being referred by the public or the private system, being employed, type of accomodation, being or having been of no fixed abode, being a disabled worker beneficiary, duration of illness, number of admissions, duration of admissions, number of suicide attempts, forensic history, crystallized intelligence.
 
 ## Missing data
 
 ### Missing exposure and outcome
 Observations with missing outcome data will be removed from the analysis.
 Observations with missing targeted dependent variable data (cogntive function) will also be removed.  
-We acknowledge that this may be seen as over-simplification.
+We acknowledge that this may be seen as an over-simplification.
 
 ### Missing covariates
 Missing covariate data will be imputed using multiple imputations (MI). We anticipate 5% missing data and will use m=10-20 imputed datasets.
